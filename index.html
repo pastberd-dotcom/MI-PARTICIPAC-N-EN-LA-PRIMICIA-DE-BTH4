@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MI PARTICIPACIÓN EN LA PRIMICIA DE LA SEÑORA BTH</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a1628 0%, #1a2f4d 50%, #0a1628 100%);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(218, 165, 32, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: shimmer 20s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+            padding: 40px 30px;
+            border-radius: 20px 20px 0 0;
+            text-align: center;
+            border: 2px solid #DAA520;
+            border-bottom: none;
+            box-shadow: 0 -5px 30px rgba(218, 165, 32, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(218, 165, 32, 0.2), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            50%, 100% { left: 100%; }
+        }
+
+        h1 {
+            color: #DAA520;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-shadow: 0 2px 10px rgba(218, 165, 32, 0.5);
+            line-height: 1.4;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            color: #E6E6E6;
+            font-size: 14px;
+            margin-top: 15px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .connection-status {
+            margin-top: 15px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #E6E6E6;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 5px;
+            animation: pulse 2s infinite;
+        }
+
+        .status-connected {
+            background: #48bb78;
+        }
+
+        .status-disconnected {
+            background: #f56565;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .form-container {
+            background: #ffffff;
+            padding: 40px 35px;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+            border: 2px solid #DAA520;
+            border-top: none;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            color: #1e3a5f;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+            letter-spacing: 0.3px;
+        }
+
+        .required {
+            color: #DAA520;
+            font-weight: 700;
+        }
+
+        .optional {
+            color: #718096;
+            font-size: 12px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+            color: #1a202c;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #DAA520;
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.1);
+        }
+
+        input:hover, select:hover {
+            border-color: #2c5282;
+        }
+
+        .phone-group {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 10px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #DAA520 0%, #B8860B 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(218, 165, 32, 0.4);
+            margin-top: 10px;
+            position: relative;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(218, 165, 32, 0.6);
+            background: linear-gradient(135deg, #B8860B 0%, #DAA520 100%);
+        }
+
+        .submit-btn:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .loading {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .loading-spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            margin: 10% auto;
+            padding: 40px;
+            border: 3px solid #DAA520;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+            animation: slideDown 0.4s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            color: #1e3a5f;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .modal-message {
+            color: #4a5568;
+            font-size: 16px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .modal-close {
+            background: linear-gradient(135deg, #DAA520 0%, #B8860B 100%);
+            color: white;
+            padding: 12px 40px;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(218, 165, 32, 0.4);
+        }
+
+        .error-message {
+            color: #e53e3e;
+            font-size: 13px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .share-section {
+            margin-top: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, #e6f2ff 0%, #cce5ff 100%);
+            border-radius: 12px;
+            border: 2px solid #2c5282;
+        }
+
+        .share-title {
+            color: #1e3a5f;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .share-link {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .share-input {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #2c5282;
+            border-radius: 8px;
+            font-size: 13px;
+            background: white;
+        }
+
+        .copy-btn {
+            padding: 10px 20px;
+            background: #2c5282;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: #1e3a5f;
+            transform: scale(1.05);
+        }
+
+        .info-box {
+            margin-top: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, #fff5e6 0%, #ffe6cc 100%);
+            border-radius: 12px;
+            border: 2px solid #DAA520;
+        }
+
+        .info-title {
+            color: #B8860B;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .info-text {
+            color: #4a5568;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 22px;
+            }
+
+            .form-container {
+                padding: 30px 20px;
+            }
+
+            .phone-group {
+                grid-template-columns: 100px 1fr;
+            }
+
+            .modal-content {
+                margin: 20% auto;
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>MI PARTICIPACIÓN EN LA PRIMICIA DE LA SEÑORA BTH</h1>
+            <div class="subtitle">Formulario oficial de registro de participaciones</div>
+            <div class="connection-status">
+                <span class="status-indicator" id="statusIndicator"></span>
+                <span id="statusText">Verificando conexión...</span>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <form id="participacionForm">
+                <div class="form-group">
+                    <label>Nombre completo <span class="required">*</span></label>
+                    <input type="text" id="nombre" name="nombre" required placeholder="Ingrese su nombre completo">
+                    <div class="error-message" id="error-nombre">Este campo es obligatorio</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Número de cédula <span class="required">*</span></label>
+                    <input type="text" id="cedula" name="cedula" required placeholder="Ingrese su número de cédula">
+                    <div class="error-message" id="error-cedula">Este campo es obligatorio</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Pasaporte <span class="optional">(opcional)</span></label>
+                    <input type="text" id="pasaporte" name="pasaporte" placeholder="Ingrese su número de pasaporte">
+                </div>
+
+                <div class="form-group">
+                    <label>Correo electrónico <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required placeholder="ejemplo@correo.com">
+                    <div class="error-message" id="error-email">Ingrese un correo electrónico válido</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Número de celular con código de país <span class="required">*</span></label>
+                    <div class="phone-group">
+                        <select id="codigoPais" name="codigoPais" required>
+                            <option value="+57">+57 (CO)</option>
+                            <option value="+1">+1 (US/CA)</option>
+                            <option value="+34">+34 (ES)</option>
+                            <option value="+52">+52 (MX)</option>
+                            <option value="+54">+54 (AR)</option>
+                            <option value="+55">+55 (BR)</option>
+                            <option value="+56">+56 (CL)</option>
+                            <option value="+58">+58 (VE)</option>
+                            <option value="+51">+51 (PE)</option>
+                            <option value="+593">+593 (EC)</option>
+                            <option value="+507">+507 (PA)</option>
+                            <option value="+506">+506 (CR)</option>
+                        </select>
+                        <input type="tel" id="celular" name="celular" required placeholder="Número de celular">
+                    </div>
+                    <div class="error-message" id="error-celular">Este campo es obligatorio</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Aporte en dólares (USD) <span class="required">*</span></label>
+                    <input type="number" id="aporte" name="aporte" required min="0" step="0.01" placeholder="0.00">
+                    <div class="error-message" id="error-aporte">Ingrese un monto válido</div>
+                </div>
+
+                <div class="form-group">
+                    <label>¿Cuántas participaciones de 100 dólares? <span class="required">*</span></label>
+                    <input type="number" id="participaciones" name="participaciones" required min="1" step="1" placeholder="0">
+                    <div class="error-message" id="error-participaciones">Ingrese un número válido (mínimo 1)</div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span id="btnText">Enviar Participación</span>
+                    <div class="loading" id="loading">
+                        <div class="loading-spinner"></div>
+                    </div>
+                </button>
+            </form>
+        </div>
+
+        <div class="info-box">
+            <div class="info-title">📊 Almacenamiento en la nube</div>
+            <div class="info-text">
+                Todos los datos se guardan automáticamente en Google Sheets. 
+                Los administradores pueden ver todos los registros en tiempo real desde su hoja de cálculo.
+            </div>
+        </div>
+
+        <div class="share-section">
+            <div class="share-title">🔗 Enlace para compartir este formulario</div>
+            <div class="share-link">
+                <input type="text" class="share-input" id="shareLink" readonly>
+                <button class="copy-btn" onclick="copyShareLink()">Copiar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de éxito -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-icon">✅</div>
+            <h2 class="modal-title">¡Registro Exitoso!</h2>
+            <p class="modal-message">Su participación ha sido registrada correctamente en Google Sheets. Gracias por su confianza.</p>
+            <button class="modal-close" onclick="closeModal()">Aceptar</button>
+        </div>
+    </div>
+
+    <!-- Modal de error -->
+    <div id="errorModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-icon">❌</div>
+            <h2 class="modal-title">Error al Enviar</h2>
+            <p class="modal-message" id="errorMessage">Hubo un problema al guardar los datos. Por favor, intente nuevamente.</p>
+            <button class="modal-close" onclick="closeErrorModal()">Cerrar</button>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // CONFIGURACIÓN - ¡IMPORTANTE!
+        // ============================================
+        
+        // ⚠️ REEMPLAZA ESTA URL CON LA URL DE TU GOOGLE APPS SCRIPT
+        const GOOGLE_SCRIPT_URL = 'PEGA_AQUI_TU_URL_DE_GOOGLE_SCRIPT';
+        
+        // ============================================
+        // FUNCIONES PRINCIPALES
+        // ============================================
+
+        // Verificar conexión con Google Sheets
+        async function checkConnection() {
+            const statusIndicator = document.getElementById('statusIndicator');
+            const statusText = document.getElementById('statusText');
+            
+            if (GOOGLE_SCRIPT_URL === 'PEGA_AQUI_TU_URL_DE_GOOGLE_SCRIPT') {
+                statusIndicator.className = 'status-indicator status-disconnected';
+                statusText.textContent = '⚠️ Configuración pendiente - Ver instrucciones abajo';
+                return false;
+            }
+            
+            try {
+                statusIndicator.className = 'status-indicator status-connected';
+                statusText.textContent = '✓ Conectado con Google Sheets';
+                return true;
+            } catch (error) {
+                statusIndicator.className = 'status-indicator status-disconnected';
+                statusText.textContent = '✗ Sin conexión a Google Sheets';
+                return false;
+            }
+        }
+
+        // Inicializar enlace para compartir
+        document.getElementById('shareLink').value = window.location.href;
+
+        // Función para copiar el enlace
+        function copyShareLink() {
+            const shareInput = document.getElementById('shareLink');
+            shareInput.select();
+            shareInput.setSelectionRange(0, 99999);
+            
+            try {
+                document.execCommand('copy');
+                const btn = event.target;
+                const originalText = btn.textContent;
+                btn.textContent = '✓ Copiado';
+                btn.style.background = '#48bb78';
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = '#2c5282';
+                }, 2000);
+            } catch (err) {
+                alert('Por favor, copie el enlace manualmente');
+            }
+        }
+
+        // Manejar el envío del formulario
+        document.getElementById('participacionForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Verificar configuración
+            if (GOOGLE_SCRIPT_URL === 'PEGA_AQUI_TU_URL_DE_GOOGLE_SCRIPT') {
+                alert('⚠️ CONFIGURACIÓN PENDIENTE\n\nPor favor, configure la URL de Google Apps Script en el código del formulario.\n\nVea las instrucciones en el archivo INSTRUCCIONES.txt');
+                return;
+            }
+            
+            // Validar campos
+            let isValid = true;
+            const fields = ['nombre', 'cedula', 'email', 'celular', 'aporte', 'participaciones'];
+            
+            fields.forEach(field => {
+                const input = document.getElementById(field);
+                const error = document.getElementById(`error-${field}`);
+                
+                if (!input.value.trim() || (input.type === 'email' && !input.validity.valid)) {
+                    error.style.display = 'block';
+                    input.style.borderColor = '#e53e3e';
+                    isValid = false;
+                } else {
+                    error.style.display = 'none';
+                    input.style.borderColor = '#e2e8f0';
+                }
+            });
+            
+            if (!isValid) {
+                alert('Por favor, complete todos los campos obligatorios correctamente.');
+                return;
+            }
+            
+            // Preparar datos
+            const formData = {
+                fecha: new Date().toLocaleString('es-CO', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                }),
+                nombre: document.getElementById('nombre').value.trim(),
+                cedula: document.getElementById('cedula').value.trim(),
+                pasaporte: document.getElementById('pasaporte').value.trim() || 'N/A',
+                email: document.getElementById('email').value.trim(),
+                telefono: document.getElementById('codigoPais').value + ' ' + document.getElementById('celular').value.trim(),
+                aporte: parseFloat(document.getElementById('aporte').value),
+                participaciones: parseInt(document.getElementById('participaciones').value)
+            };
+            
+            // Mostrar loading
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const loading = document.getElementById('loading');
+            
+            submitBtn.disabled = true;
+            btnText.style.display = 'none';
+            loading.style.display = 'block';
+            
+            try {
+                // Enviar datos a Google Sheets
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                // Mostrar modal de éxito
+                document.getElementById('successModal').style.display = 'block';
+                
+                // Limpiar formulario
+                this.reset();
+                
+                console.log('✅ Datos enviados correctamente:', formData);
+                
+            } catch (error) {
+                // Mostrar modal de error
+                document.getElementById('errorMessage').textContent = 
+                    'Hubo un problema al conectar con Google Sheets. Por favor, verifique su conexión a internet e intente nuevamente.';
+                document.getElementById('errorModal').style.display = 'block';
+                
+                console.error('❌ Error al enviar datos:', error);
+            } finally {
+                // Ocultar loading
+                submitBtn.disabled = false;
+                btnText.style.display = 'inline';
+                loading.style.display = 'none';
+            }
+        });
+
+        // Cerrar modales
+        function closeModal() {
+            document.getElementById('successModal').style.display = 'none';
+        }
+
+        function closeErrorModal() {
+            document.getElementById('errorModal').style.display = 'none';
+        }
+
+        // Cerrar modal al hacer clic fuera
+        window.onclick = function(event) {
+            const successModal = document.getElementById('successModal');
+            const errorModal = document.getElementById('errorModal');
+            
+            if (event.target == successModal) {
+                successModal.style.display = 'none';
+            }
+            if (event.target == errorModal) {
+                errorModal.style.display = 'none';
+            }
+        }
+
+        // Inicializar al cargar la página
+        window.addEventListener('load', function() {
+            checkConnection();
+            
+            console.log(
+                '%c🌟 FORMULARIO BTH - Conectado con Google Sheets 🌟',
+                'color: #DAA520; font-size: 16px; font-weight: bold;'
+            );
+        });
+    </script>
+</body>
+</html>
